@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resultado - Exploração do Oceano</title>
+
+  <!-- IMPORTAÇÃO DO CSS EXTERNO -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ESTILO ESPECÍFICO DO RESULTADO */
+
+    .resultado-container {
+      text-align:center;
+      padding: 60px 20px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      min-height: calc(100vh - 140px);
+    }
+
+    .resultado-container h1 {
+      font-size: 2rem;
+      margin:0 0 8px 0;
+    }
+
+    .resultado-container h2 {
+      font-size: 1.8rem;
+      color: var(--accent);
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .resultado-container p {
+      font-size: 1.1rem;
+      margin-top: 0;
+      margin-bottom: 22px;
+      color: var(--muted);
+    }
+
+    .resultado-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 26px;
+      max-width: 420px;
+      margin: 0 auto;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .resultado-card img {
+      max-width: 100%;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto 20px auto;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+    }
+
+    .btn-voltar {
+      display:block;
+      width:100%;
+      text-align:center;
+      background: var(--accent);
+      color: var(--dark-text);
+      padding:12px;
+      font-weight:700;
+      border-radius:12px;
+      cursor:pointer;
+      transition: var(--transition);
+      border:0;
+      margin-top:6px;
+    }
+
+    .btn-voltar:hover {
+      transform: translateY(-3px);
+      box-shadow:0 12px 30px rgba(0,132,180,0.45);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CONTEÚDO -->
+  <main class="resultado-container">
+    <h1>🌊 Emoção detectada:</h1>
+    <h2 id="emocaoTitle">Processando...</h2>
+    <p id="confTitle"></p>
+
+    <div class="resultado-card">
+      <img id="imagemEmocao" alt="Imagem relacionada à emoção" />
+      <button class="btn-voltar" onclick="voltar()">⬅️ Voltar ao Início</button>
+    </div>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <span>Projeto Escolar – Blue Team © <span id="anoAtual"></span></span>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    const imagensPorEmocao = {
+      feliz: [
+      'static/mar_feliz/1.png',
+      'static/mar_feliz/2.png',
+      'static/mar_feliz/3.png',
+      'static/mar_feliz/4.png',
+      'static/mar_feliz/5.png',
+      'static/mar_feliz/6.png',
+      'static/mar_feliz/7.png',
+      'static/mar_feliz/8.png',
+      'static/mar_feliz/9.png',
+      'static/mar_feliz/10.png',
+      'static/mar_feliz/11.png',
+      'static/mar_feliz/12.png',
+      'static/mar_feliz/13.png',
+      'static/mar_feliz/14.png',
+      'static/mar_feliz/15.png',
+      'static/mar_feliz/16.png',
+      'static/mar_feliz/17.png',
+      'static/mar_feliz/18.png',
+      'static/mar_feliz/19.png',
+      'static/mar_feliz/20.png'
+    ],
+
+      triste: [
+      'static/mar_triste/1.png',
+      'static/mar_triste/2.png',
+      'static/mar_triste/3.png',
+      'static/mar_triste/4.png',
+      'static/mar_triste/5.png',
+      'static/mar_triste/6.png',
+      'static/mar_triste/7.png',
+      'static/mar_triste/8.png',
+      'static/mar_triste/9.png',
+      'static/mar_triste/10.png',
+      'static/mar_triste/11.png',
+      'static/mar_triste/12.png',
+      'static/mar_triste/13.png',
+      'static/mar_triste/14.png',
+      'static/mar_triste/15.png',
+      'static/mar_triste/16.png',
+      'static/mar_triste/17.png',
+      'static/mar_triste/18.png',
+      'static/mar_triste/19.png',
+      'static/mar_triste/20.png',
+      'static/mar_triste/21.png',
+    ],
+
+      neutro: [
+      'static/mar_neutro/1.png',
+      'static/mar_neutro/2.png',
+      'static/mar_neutro/3.png',
+      'static/mar_neutro/4.png',
+      'static/mar_neutro/5.png',
+      'static/mar_neutro/6.png',
+      'static/mar_neutro/7.png',
+      'static/mar_neutro/8.png',
+      'static/mar_neutro/9.png',
+      'static/mar_neutro/10.png',
+      'static/mar_neutro/11.png',
+      'static/mar_neutro/12.png',
+      'static/mar_neutro/13.png',
+      'static/mar_neutro/14.png',
+      'static/mar_neutro/15.png',
+      'static/mar_neutro/16.png',
+      'static/mar_neutro/17.png',
+      'static/mar_neutro/18.png',
+      'static/mar_neutro/19.png',
+      'static/mar_neutro/20.png',
+    ]
+    };
+
+    const traducoes = {
+      happy: 'feliz',
+      sad: 'triste',
+      neutral: 'neutro',
+      angry: 'triste',
+      fearful: 'triste',
+      disgusted: 'triste',
+      surprised: 'feliz'
+    };
+
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    function imagemAleatoria(lista) {
+      return lista[Math.floor(Math.random() * lista.length)];
+    }
+
+    const emocaoOriginal = getQueryParam('emocao') || 'neutral';
+    const conf = getQueryParam('conf') || '0';
+    const emocaoTraduzida = traducoes[emocaoOriginal] || 'nenhuma';
+
+    document.getElementById('emocaoTitle').innerText =
+      emocaoTraduzida.charAt(0).toUpperCase() + emocaoTraduzida.slice(1);
+    document.getElementById('confTitle').innerText = `Confiança: ${conf}%`;
+
+    if (imagensPorEmocao[emocaoTraduzida] && imagensPorEmocao[emocaoTraduzida].length > 0) {
+      document.getElementById('imagemEmocao').src =
+        imagemAleatoria(imagensPorEmocao[emocaoTraduzida]);
+    } else {
+      document.getElementById('imagemEmocao').style.display = 'none';
+    }
+
+    function voltar() {
+      window.location.href = 'index.html';
+    }
+
+    document.getElementById('anoAtual').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

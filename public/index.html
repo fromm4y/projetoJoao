@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Descubra o incrível mundo dos animais marinhos! Curiosidades, fatos científicos e galeria sobre a vida no fundo do mar e sua preservação." />
+  <title>Animais Marinhos — Blue Team</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.8.0/dist/tf.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">💧</div>
+      <div class="site-title">
+        <strong>Blue Team — Fundo do Mar</strong>
+        <small>Projeto: Animais Marinhos</small>
+      </div>
+    </div>
+
+    <nav aria-label="Main">
+      <a href="#curiosidades">Curiosidades</a>
+      <a href="#fatos">Fatos</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="controls" role="toolbar" aria-label="Controles">
+      <button id="themeToggle" class="btn" aria-pressed="false" title="Alternar tema">🌗</button>
+      <div class="authors" aria-hidden="false">
+        <!-- TODO: Atualize os nomes dos integrantes se necessário -->
+        João Victor Leonardo Costa · Lucas Freitas Ruiz Candido · Vinicius Sousa Costa
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <article class="hero-card" role="article" aria-label="Introdução">
+        <h1 id="heroTitle">Animais Marinhos</h1>
+        <p class="lead">Salvar o mar é salvar o planeta.</p>
+        <p aria-live="polite">Descubra o incrível mundo dos animais marinhos! Este site apresenta curiosidades, espécies fascinantes e informações sobre a importância da vida nos oceanos e sua preservação.</p>
+
+        <div class="meta" aria-hidden="false">
+          <span class="muted">Equipe: <strong>Blue Team</strong></span>
+          <span class="muted">Tema: <strong>Animais Marinhos</strong></span>
+        </div>
+
+        <div class="buttons" role="group" aria-label="Ações principais">
+          <button id="abrirIA" aria-label="Iniciar reconhecimento facial" class="primary">Reconhecimento Facial</button>
+          <button id="btnAbrirChatbot" aria-label="Abrir chatbot" class="btn">Abrir Chatbot</button>
+          <!-- TODO: Substitua os textos dos botões caso queira -->
+        </div>
+      </article>
+
+      <figure class="hero-figure" tabindex="0" aria-label="Imagem principal dos animais marinhos">
+        <img src="https://influx.com.br/storage/app/media/uploaded-files/hubfs/1415475/blog-files/Animais_marinhos__Imagem_1.jpg" alt="Imagem representativa do fundo do mar com diversos animais marinhos.">
+      </figure>
+    </section>
+
+    <!-- CURIOSIDADES -->
+    <section id="curiosidades" aria-labelledby="curiosidadesTitle">
+      <h2 id="curiosidadesTitle">Curiosidades</h2>
+
+      <div id="curiosidades" role="list">
+        <article class="curio" tabindex="0" role="listitem">
+          <div class="icon" aria-hidden="true">1</div>
+          <p><strong>A lula-colossal</strong> pode crescer até <strong>14 metros</strong> de comprimento.</p>
+        </article>
+
+        <article class="curio" tabindex="0" role="listitem">
+          <div class="icon" aria-hidden="true">2</div>
+          <p><strong>Os golfinhos</strong> têm "nomes" e se chamam com assobios específicos.</p>
+        </article>
+
+        <article class="curio" tabindex="0" role="listitem">
+          <div class="icon" aria-hidden="true">3</div>
+          <p>A água do mar cobre <strong>71%</strong> da Terra e é o lar de cerca de <strong>80%</strong> de toda a vida no planeta.</p>
+        </article>
+
+        <article class="curio" tabindex="0" role="listitem">
+          <div class="icon" aria-hidden="true">4</div>
+          <p>O <strong>tubarão-baleia</strong> é o maior peixe do mundo e pode atingir até <strong>18 metros</strong>.</p>
+        </article>
+
+        <article class="curio" tabindex="0" role="listitem">
+          <div class="icon" aria-hidden="true">5</div>
+          <p>O <strong>cavalo-marinho</strong> é o único animal em que o <strong>macho</strong> engravida.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FATOS / CIÊNCIA -->
+    <section id="fatos" aria-labelledby="fatosTitle">
+      <h2 id="fatosTitle">Fatos e Ciência</h2>
+
+      <div id="fatos" role="list">
+        <article class="card" tabindex="0" role="listitem" aria-labelledby="f1">
+          <h3 id="f1">Poluição Marinha</h3>
+          <p>Mais de 8 milhões de toneladas de plástico chegam aos oceanos todos os anos, ameaçando tartarugas, peixes e aves marinhas.</p>
+        </article>
+
+        <article class="card" tabindex="0" role="listitem" aria-labelledby="f2">
+          <h3 id="f2">Recifes de Corais</h3>
+          <p>Os recifes ocupam menos de 1% do fundo do oceano, mas abrigam cerca de 25% de todas as espécies marinhas.</p>
+        </article>
+
+        <article class="card" tabindex="0" role="listitem" aria-labelledby="f3">
+          <h3 id="f3">Baleias e o Clima</h3>
+          <p>As baleias armazenam carbono e ajudam o fitoplâncton — importantes aliados no combate às mudanças climáticas.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" aria-labelledby="galeriaTitle">
+      <h2 id="galeriaTitle">Galeria</h2>
+      <p class="muted">Seleção de imagens para explorar espécies e ambientes marinhos.</p>
+
+      <div class="gallery" role="list">
+        <figure class="thumb" role="listitem">
+          <img src="https://influx.com.br/storage/app/media/uploaded-files/hubfs/1415475/blog-files/Animais_marinhos__Imagem_1.jpg" alt="Cardume no oceano aberto">
+          <figcaption class="caption">Cardume em mar aberto</figcaption>
+        </figure>
+
+        <figure class="thumb" role="listitem">
+          <img src="https://cobasiblog.blob.core.windows.net/production-ofc/2023/05/cavalo-marinho.webp" alt="Cavalo-marinho entre algas">
+          <figcaption class="caption">Cavalo-marinho entre algas</figcaption>
+        </figure>
+
+        <figure class="thumb" role="listitem">
+          <img src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/07/orca.jpg?w=419&h=249&crop=1" alt="Orca nadando">
+          <figcaption class="caption">Orca em seu habitat</figcaption>
+        </figure>
+
+        <figure class="thumb" role="listitem">
+          <img src="https://www.petz.com.br/blog/wp-content/uploads/2022/07/animais-aquaticos-3.jpg" alt="Diversos animais aquáticos">
+          <figcaption class="caption">Diversidade marinha</figcaption>
+        </figure>
+
+        <figure class="thumb" role="listitem">
+          <img src="https://escolaeducacao.com.br/wp-content/uploads/2020/08/cachalote.jpg" alt="Cachalote na superfície">
+          <figcaption class="caption">Cachalote surfacing</figcaption>
+        </figure>
+
+        <figure class="thumb" role="listitem">
+          <img src="https://super.abril.com.br/wp-content/uploads/2016/12/golfinhos.jpg?quality=70&strip=all" alt="Golfinhos saltando">
+          <figcaption class="caption">Golfinhos em ação</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faqTitle">
+      <h2 id="faqTitle">Perguntas Frequentes (FAQ)</h2>
+      <div class="faq" role="list">
+        <details>
+          <summary>Os golfinhos são peixes?</summary>
+          <p>Não, são mamíferos marinhos que respiram ar pelos pulmões.</p>
+        </details>
+
+        <details>
+          <summary>As baleias dormem?</summary>
+          <p>Sim, mas apenas metade do cérebro "dorme" por vez para garantir que respirem.</p>
+        </details>
+
+        <details>
+          <summary>O que as tartarugas marinhas comem?</summary>
+          <p>Dependendo da espécie: algas, águas-vivas ou pequenos crustáceos.</p>
+        </details>
+
+        <details>
+          <summary>Os corais são plantas ou animais?</summary>
+          <p>São animais, pertencentes ao grupo dos cnidários.</p>
+        </details>
+
+        <details>
+          <summary>Por que alguns peixes brilham no escuro?</summary>
+          <p>Produzem luz via bioluminescência para atrair presas ou se camuflar.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" role="region" aria-label="Chamada para ação">
+      <div>
+        <strong>Quer aprender mais?</strong>
+        <p class="muted">Explore nossas seções ou baixe o material didático para a sala de aula.</p>
+      </div>
+      <div>
+        <a href="#fatos" class="btn" role="button">Aprenda mais</a>
+        <a href="#galeria" class="btn primary" role="button">Ver galeria</a>
+      </div>
+    </section>
+
+    <!-- CRÉDITOS / FONTES -->
+    <aside aria-label="Créditos e Fontes">
+      <h3>Créditos / Fontes</h3>
+      <p class="muted">Imagens e referências utilizadas (exemplos fornecidos pelo grupo):</p>
+      <ul>
+        <li><a href="https://influx.com.br/storage/app/media/uploaded-files/hubfs/1415475/blog-files/Animais_marinhos__Imagem_1.jpg">Imagem 1 — influx.com.br</a></li>
+        <li><a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzIeO0Ik8vc6Iwt6KYqO8Adb-YInOw2W2bQg&s">Imagem 2 — Google Images (link)</a></li>
+        <li><a href="https://cobasiblog.blob.core.windows.net/production-ofc/2023/05/cavalo-marinho.webp">Cavalo-marinho — Cobasi Blog</a></li>
+        <li><a href="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/07/orca.jpg">Orca — CNN Brasil</a></li>
+        <li><a href="https://www.petz.com.br/blog/wp-content/uploads/2022/07/animais-aquaticos-3.jpg">Animais aquáticos — Petz</a></li>
+        <li><a href="https://cdn-blog.superprof.com/blog_br/wp-content/uploads/2024/06/peixe-palhaco-lambari.jpg">Peixe-palhaço — Superprof</a></li>
+        <li><a href="https://tudosobreanimais.com.br/assets/images/2025/01/01/pinauna-sascha_burgos-cc0-inaturalist.webp">Foto — Tudo Sobre Animais</a></li>
+        <li><a href="https://cdn.oantagonista.com/uploads/2025/07/peixes_1751692413591-1024x576.jpg">Imagem 9 — O Antagonista</a></li>
+        <li><a href="https://chc.org.br/wp-content/uploads/2016/11/soneca2.jpg">Imagem 10 — CHC</a></li>
+        <li><a href="https://escolaeducacao.com.br/wp-content/uploads/2020/08/cachalote.jpg">Cachalote — Escola Educação</a></li>
+        <li><a href="https://super.abril.com.br/wp-content/uploads/2016/12/golfinhos.jpg?quality=70&strip=all">Golfinhos — Super</a></li>
+      </ul>
+      <p class="muted">Dados científicos: relatórios de organizações marinhas e artigos de divulgação científica.</p>
+    </aside>
+
+  </main>
+
+  <!-- CHATBOT ASIDE (inicialmente oculto) -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+    <df-messenger
+      intent="WELCOME"
+      chat-title="Chatbot-IA"
+      agent-id="7e9ea28d-fc2a-4f18-a435-1d31267d9a34"
+      language-code="pt-br">
+    </df-messenger>
+
+  <footer>
+    <div class="muted">© <span id="year"></span> Blue Team — Projeto Fundo do Mar</div>
+    <div>
+      <a href="#top" id="backToTop">Voltar ao topo</a>
+    </div>
+  </footer>
+  <!-- MODAL DE RECONHECIMENTO FACIAL -->
+  <div id="cameraModal" class="modal" aria-hidden="true" style="display:none;">
+    <div class="modal-content">
+      <button id="fecharModal" class="botao-fechar" title="Fechar">❌</button>
+      <h2 class="modal-title">Reconhecimento Facial</h2>
+      <div class="video-wrap">
+        <video id="video" autoplay muted playsinline></video>
+      </div>
+      <div class="controls">
+        <button id="tirarFoto" class="botao-foto" title="Tirar foto">📸</button>
+      </div>
+      <p id="modalStatus" class="modal-status">Aguardando...</p>
+      <canvas id="fotoCanvas" style="display:none;"></canvas>
+    </div>
+  </div>
+<script defer src="script.js"></script>
+</body>
+</html>

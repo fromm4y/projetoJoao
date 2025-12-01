@@ -1,0 +1,650 @@
+/* ===========================
+   STYLE (Salvar como style.css)
+   ===========================
+   TODO: Altere cores, tipografia e imagens conforme o estilo do seu projeto.
+*/
+
+/* --------- INÍCIO: CSS ORIGINAL (mantido sem alteração) --------- */
+
+:root{
+  --bg:#071d2b;
+  --card:#0e394a;
+  --muted:#98c6d6;
+  --accent:#00aaff;
+  --glass: rgba(255,255,255,0.04);
+  --light:#eaf6fb;
+  --dark-text:#06272f;
+  --radius:14px;
+  --transition:300ms ease;
+}
+
+/* Light theme overrides */
+:root.light {
+  --bg: #f5fbff;
+  --card: #ffffff;
+  --muted: #356a78;
+  --accent: #006bb3;
+  --glass: rgba(6,39,47,0.04);
+  --light: #06272f;
+  --dark-text: #06272f;
+}
+
+html,body{
+  height:100%;
+  margin:0;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(180deg, rgba(0,23,36,1) 0%, rgba(7,29,43,1) 40%);
+  color:var(--light);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+a{ color:var(--accent); text-decoration:none; }
+a:focus{ outline:3px dashed var(--muted); outline-offset:4px; }
+
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:1rem 1.25rem;
+  position:sticky;
+  top:0;
+  z-index:60;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.05));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.brand{
+  display:flex;
+  gap:.75rem;
+  align-items:center;
+}
+.logo {
+  width:48px;
+  height:48px;
+  border-radius:12px;
+  background: linear-gradient(135deg,var(--accent), #33d4ff);
+  display:grid;
+  place-items:center;
+  font-weight:700;
+  color:white;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+.site-title{
+  display:flex;
+  flex-direction:column;
+  line-height:1;
+}
+.site-title small{ font-size:12px; opacity:.9; color:var(--muted); }
+
+nav[aria-label="Main"]{
+  display:flex;
+  gap:.75rem;
+  align-items:center;
+}
+nav a{
+  padding:.5rem .75rem;
+  border-radius:10px;
+  font-weight:600;
+  color:var(--light);
+  transition: all var(--transition);
+}
+nav a:hover, nav a:focus { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,0.45); }
+
+.controls{
+  display:flex;
+  gap:.5rem;
+  align-items:center;
+}
+
+button, .btn{
+  cursor:pointer;
+  border:0;
+  padding:.6rem .85rem;
+  border-radius:10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  color:var(--light);
+  font-weight:700;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+button:focus{ outline:3px solid rgba(255,255,255,0.06); outline-offset:3px; }
+.primary{
+  background: linear-gradient(180deg,var(--accent), #3bd0ff);
+  color:var(--dark-text);
+  box-shadow: 0 8px 28px rgba(18,90,120,0.25);
+}
+
+main{
+  max-width:1100px;
+  margin:1.25rem auto;
+  padding:1rem;
+  display:flex;
+  flex-direction:column;
+  gap:1.25rem;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  display:grid;
+  grid-template-columns: 1fr 420px;
+  gap:1rem;
+  align-items:center;
+}
+.hero-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding:1.25rem;
+  border-radius:var(--radius);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+  border:1px solid rgba(255,255,255,0.03);
+}
+.hero h1{
+  margin:0 0 .5rem 0;
+  font-size:clamp(1.5rem,2.2rem,2.6rem);
+  letter-spacing:-0.5px;
+}
+.hero p.lead{ margin:0 0 .75rem 0; color:var(--muted); }
+.hero .meta{
+  display:flex;
+  gap:.5rem;
+  align-items:center;
+  margin-top:.75rem;
+  flex-wrap:wrap;
+}
+
+.hero-figure{
+  width:100%;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.6);
+  transform-origin:center;
+  transition: transform 900ms ease;
+}
+.hero-figure img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+.hero-figure:focus-within, .hero-figure:hover{ transform: translateY(-6px) scale(1.01); }
+
+.buttons{
+  display:flex;
+  gap:.5rem;
+  flex-wrap:wrap;
+  margin-top:.85rem;
+}
+
+/* ---------- Curiosidades (HORIZONTAL SEM SCROLL) ---------- */
+#curiosidades{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.2rem;
+
+  /* impede scroll horizontal */
+  overflow-x: hidden;
+
+  /* os cards vão encolher suavemente para caber */
+  flex-wrap: nowrap;
+}
+
+.curio{
+  flex: 1 1 0;                /* divide o espaço igualmente */
+  min-width: 0;               /* permite encolher sem quebrar */
+  max-width: 260px;           /* tamanho ideal */
+  background: var(--card);
+  padding: 1.2rem;
+  border-radius: 14px;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(135deg, rgba(180,150,255,0.25), rgba(120,200,255,0.25));
+  backdrop-filter: blur(6px);
+  transition: .25s ease;
+}
+
+.curio:hover{
+  transform: translateY(-6px);
+}
+
+/* ---------- Fatos (HORIZONTAL SEM SCROLL) ---------- */
+#fatos{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.2rem;
+
+  /* impede scroll horizontal */
+  overflow-x: hidden;
+
+  /* tudo na mesma linha, ajustando */
+  flex-wrap: nowrap;
+}
+
+.card{
+  flex: 1 1 0;             /* divide largura igualmente */
+  min-width: 0;            /* permite encolher sem sumir */
+  max-width: 280px;        /* largura ideal */
+
+  background: linear-gradient(145deg, rgba(160,140,255,0.25), rgba(80,190,255,0.25));
+  padding: 1.2rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+  transition: .25s ease;
+}
+
+.card:hover{
+  transform: translateY(-8px);
+}
+
+
+/* ---------- Galeria ---------- */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+  gap:.75rem;
+}
+.thumb{
+  position:relative;
+  overflow:hidden;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.03);
+  background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.25));
+}
+.thumb img{ width:100%; height:140px; object-fit:cover; display:block; transition: transform 600ms ease; }
+.thumb:hover img{ transform: scale(1.07) rotate(-.5deg); }
+.caption{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:.5rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.6));
+  color:#fff;
+  font-size:13px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+/* ---------- FAQ ---------- */
+.faq details{
+  background:var(--card);
+  padding:.85rem;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.03);
+  margin-bottom:.5rem;
+}
+.faq summary{ cursor:pointer; font-weight:700; margin:0; list-style:none; }
+.faq summary:focus{ outline:3px dashed rgba(255,255,255,0.06); outline-offset:6px; }
+
+/* ---------- Footer ---------- */
+footer{
+  margin-top:1rem;
+  padding:1rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  color:var(--muted);
+}
+
+/* ---------- Utilities ---------- */
+.muted{ color:var(--muted); font-size:13px; }
+.authors{ font-size:13px; color:var(--muted); }
+.cta{
+  margin:1rem 0;
+  padding:1rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(255,255,255,0.02));
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .hero{ grid-template-columns:1fr; }
+  .hero-figure{ order:-1; }
+  header{ padding:.6rem; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; animation:none !important; transform:none !important; }
+}
+/* ==== MODAL DE RECONHECIMENTO FACIAL ==== */
+
+.modal{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px);
+  z-index:300;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.modal[aria-hidden="true"]{
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(10px);
+}
+
+.modal-content{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+  padding:1.2rem;
+  width: min(420px, 92%);
+  border-radius:var(--radius);
+  border:1px solid rgba(255,255,255,0.04);
+  box-shadow:0 18px 60px rgba(0,0,0,0.55);
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+  animation: popModal 480ms ease;
+}
+
+@keyframes popModal{
+  0%{ transform:scale(.85) translateY(20px); opacity:.3; }
+  100%{ transform:scale(1) translateY(0); opacity:1; }
+}
+
+.modal-title{
+  text-align:center;
+  margin:0;
+  font-size:1.4rem;
+  font-weight:700;
+  letter-spacing:-0.5px;
+}
+
+.botao-fechar{
+  position:absolute;
+  top:.65rem;
+  right:.65rem;
+  cursor:pointer;
+  border:0;
+  padding:.4rem .5rem;
+  border-radius:10px;
+  font-size:1rem;
+  background:var(--glass);
+  color:var(--light);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.botao-fechar:hover{ transform:scale(1.1); }
+.botao-fechar:focus{ outline:2px dashed var(--muted); outline-offset:4px; }
+
+.video-wrap{
+  width:100%;
+  overflow:hidden;
+  border-radius:var(--radius);
+  background:rgba(0,0,0,0.1);
+  border:1px solid rgba(255,255,255,0.03);
+  display:grid;
+  place-items:center;
+  padding:.25rem;
+}
+.video-wrap video{
+  width:100%;
+  border-radius:10px;
+  display:block;
+  background:#000;
+}
+
+.botao-foto{
+  cursor:pointer;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.2rem;
+  padding:.6rem 1rem;
+  border-radius:12px;
+  font-weight:700;
+  border:0;
+  background: linear-gradient(180deg,var(--accent), #3bd0ff);
+  color:var(--dark-text);
+  box-shadow:0 8px 28px rgba(18,90,120,0.25);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.botao-foto:hover{ transform:translateY(-3px); box-shadow:0 10px 32px rgba(18,90,120,0.35); }
+.botao-foto:focus{ outline:3px solid rgba(255,255,255,0.2); outline-offset:3px; }
+
+.modal-status{
+  text-align:center;
+  font-size:.9rem;
+  color:var(--muted);
+  margin-top:-.25rem;
+}
+
+/* Responsivo */
+@media (max-width:420px){
+  .modal-content{ padding:1rem; }
+  .modal-title{ font-size:1.2rem; }
+}
+
+df-messenger {
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+df-messenger.aberto {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --------- FIM: CSS ORIGINAL --------- */
+
+
+/* ---------------------------------------
+   MELHORIAS (ADICIONADAS SEM REMOVER NADA)
+   - Estas regras vêm depois do original e
+     sobrescrevem somente o necessário.
+   - Não removi nenhuma regra do bloco acima.
+   --------------------------------------- */
+
+/* 1) UNIFICAÇÃO DE VARIÁVEIS OPCIONAIS (não remove nada) */
+:root{
+  /* variáveis auxiliares para efeitos marinhos */
+  --ocean-deep: #021627;
+  --bio-accent: rgba(0, 230, 255, 0.12);
+  --card-elev: 0 18px 50px rgba(1,18,26,0.55);
+}
+
+/* 2) MELHORIA DO BACKGROUND (suave e com profundidade)
+   Esta regra complementa o background original sem apagá-lo. */
+html, body {
+  background-image:
+    radial-gradient(1200px 400px at 10% 10%, rgba(0,140,160,0.02), transparent 10%),
+    radial-gradient(900px 300px at 90% 80%, rgba(0,60,120,0.03), transparent 12%),
+    linear-gradient(180deg, rgba(2,20,30,1) 0%, rgba(6,34,48,1) 40%);
+  background-attachment: fixed;
+}
+
+/* 3) BOLHAS SUBTIS (pseudo-elements) - não interfere com elementos existentes */
+body::before{
+  content: "";
+  position: fixed;
+  left: -10%;
+  top: -5%;
+  width: 140%;
+  height: 140%;
+  background-image:
+    radial-gradient(circle at 8% 30%, rgba(255,255,255,0.03) 2px, transparent 3px),
+    radial-gradient(circle at 20% 70%, rgba(255,255,255,0.02) 3px, transparent 4px);
+  opacity: 0.7;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transform: translateZ(0);
+  animation: driftBubbles 28s linear infinite;
+  filter: blur(6px) saturate(1.1);
+}
+@keyframes driftBubbles {
+  from { transform: translateY(0) translateX(0); opacity:0.9; }
+  to { transform: translateY(-80px) translateX(60px); opacity:0.45; }
+}
+
+/* 4) LOGO/BRAND: leve pulso biomarinho */
+.logo {
+  transition: transform 700ms ease, box-shadow 700ms ease;
+}
+.logo:hover { transform: translateY(-4px) scale(1.04); box-shadow: 0 16px 40px rgba(0,200,255,0.12); }
+
+/* 5) NAV: hover com glow aquático e foco acessível */
+nav a:hover, nav a:focus {
+  background: linear-gradient(90deg, rgba(0,230,255,0.06), rgba(0,184,212,0.04));
+  box-shadow: 0 8px 28px rgba(0,150,180,0.08);
+  transform: translateY(-2px);
+}
+
+/* 6) BOTÕES: efeito aquático mais suave, foco com halo */
+button, .btn {
+  box-shadow: 0 8px 22px rgba(2,30,40,0.35);
+}
+button:focus, .btn:focus {
+  box-shadow: 0 0 30px rgba(0,200,255,0.12), 0 8px 22px rgba(2,30,40,0.35);
+  outline: none;
+}
+
+/* 7) HERO: melhorar tipografia e destaque bioluminescente */
+.hero h1{
+  letter-spacing: -0.6px;
+  line-height:1.02;
+  color: var(--light);
+  text-shadow: 0 6px 28px rgba(0,200,255,0.06);
+}
+
+/* 8) HERO FIGURE: borda glow e pequena animação de flutuação */
+.hero-figure {
+  position: relative;
+  overflow: hidden;
+}
+.hero-figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,200,255,0.02), rgba(0,0,0,0));
+  mix-blend-mode: overlay;
+}
+@keyframes heroFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+.hero-figure img { animation: heroFloat 8s ease-in-out infinite; }
+
+/* 9) CARDS: elevar, borda sutil e hover mais elegante */
+.card, .curio, .thumb {
+  transition: transform 420ms cubic-bezier(.16,.8,.24,1), box-shadow 420ms cubic-bezier(.16,.8,.24,1);
+}
+.card:hover, .curio:hover, .thumb:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--card-elev);
+}
+
+/* 10) CURIO ICONS: estilo 'shell' circular e animação de entrada */
+.icon {
+  border-radius: 50%;
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  box-shadow: inset 0 -6px 14px rgba(0,0,0,0.15);
+}
+@keyframes iconPop {
+  0% { transform: scale(.88); opacity:0; }
+  60% { transform: scale(1.06); opacity:1; }
+  100% { transform: scale(1); }
+}
+.icon { animation: iconPop 480ms ease both; }
+
+/* 11) GALERIA: zoom mais pronunciado e legenda translúcida */
+.thumb img { transition: transform 520ms cubic-bezier(.2,.9,.25,1); }
+.thumb:hover img { transform: scale(1.12) rotate(-1deg); filter: contrast(1.02) saturate(1.02); }
+.caption { background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.6)); }
+
+/* 12) MODAL: suavizar entrada e melhorar contraste */
+.modal {
+  backdrop-filter: blur(10px) saturate(1.05);
+}
+.modal-content {
+  padding: 1.4rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: calc(var(--radius) + 2px);
+  box-shadow: 0 28px 80px rgba(1,18,26,0.6);
+}
+
+/* 13) BOTAO FOTO: destaque com 'reflexo' */
+.botao-foto {
+  position: relative;
+  overflow: hidden;
+}
+.botao-foto::after{
+  content: "";
+  position: absolute;
+  left: -40%;
+  top: -60%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.12), transparent 10%);
+  transform: rotate(25deg);
+  transition: transform 600ms ease;
+  pointer-events: none;
+  opacity: 0.6;
+}
+.botao-foto:hover::after { transform: translateX(30%) rotate(25deg); opacity: 1; }
+
+/* 14) ACCESSIBILITY: foco melhor para elementos interativos */
+a:focus, button:focus, input:focus, .curio:focus-within {
+  outline: 3px solid rgba(0,200,255,0.10);
+  outline-offset: 4px;
+}
+
+/* 15) ANIMAÇÕES GLOBAIS: fade-in sequencial para seções (sem remover original) */
+@keyframes seqFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+main section, .card, .curio, .thumb {
+  will-change: transform, opacity;
+}
+main section { animation: seqFade 700ms ease both; }
+
+/* 16) RESPONSIVO: refina espaçamentos para telas pequenas */
+@media (max-width:980px){
+  .hero { grid-template-columns: 1fr; }
+  .hero-figure { order:-1; margin-bottom: 0.6rem; }
+  .brand { gap: .5rem; }
+  nav[aria-label="Main"] { display: none; } /* mantém original, mas esconde nav em mobile para limpar visual */
+}
+
+/* 17) LIGHT MODE tweaks: garantir contraste ao ativar --root.light */
+:root.light body, :root.light html { color: var(--dark-text); }
+:root.light .card, :root.light .curio, :root.light .thumb {
+  background: var(--card);
+  border-color: rgba(0,0,0,0.04);
+  box-shadow: 0 8px 24px rgba(5,20,28,0.04);
+}
+
+/* 18) fallback para navegadores antigos que não suportam variables (apenas melhora visual) */
+@supports (not ((--fake-var: 0))) {
+  .logo { box-shadow: 0 8px 28px rgba(0,160,200,0.06); }
+}
+
+/* 19) pequenas correções para o df-messenger (mantendo seu comportamento) */
+df-messenger { transition: transform 300ms ease, opacity 300ms ease; }
+df-messenger.aberto { transform: translateY(0) scale(1); opacity: 1; }
+
+/* 20) utilitários extras (pode usar nas páginas) */
+.kicker { display:inline-block; padding:.18rem .6rem; border-radius:999px; background: rgba(0,200,255,0.06); color:var(--accent); font-weight:700; font-size:.85rem; }
+
+/* ---------- FIM DAS MELHORIAS ---------- */
